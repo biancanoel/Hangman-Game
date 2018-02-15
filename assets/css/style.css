@@ -1,0 +1,57 @@
+
+/* Headings*/
+body {
+    font-family: 'Trirong','Quando', 'serif';
+}
+
+h1 {
+    font-size: 400%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 175%;
+    text-align: center;
+
+}
+
+h4 {
+    font-size: 125%;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#current-word {
+    letter-spacing: 10px;
+    
+}
+
+/*Container positioning */
+.main-content {
+    max-width: 700px;
+    margin: 50px auto;
+
+}
+.container {
+    border: solid 2px slateblue;
+    max-width: 350px;
+}
+
+.left-side {
+    float: left;
+    position: relative;
+    
+}
+
+.right-side{
+    float:right;
+    text-align: center;
+}
+
+/*image of mia */
+
+.left-side img {
+    margin: 0 75px;
+}
