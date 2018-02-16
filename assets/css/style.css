@@ -18,7 +18,7 @@ h2 {
 
 h4 {
     font-size: 125%;
-    padding-top: 30px;
+    padding-top: 20px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -28,30 +28,41 @@ h4 {
     
 }
 
-/*Container positioning */
-.main-content {
-    max-width: 700px;
-    margin: 50px auto;
-
+.row {
+    padding-top: 30px;
 }
-.container {
-    border: solid 2px slateblue;
-    max-width: 350px;
-}
-
-.left-side {
-    float: left;
-    position: relative;
-    
-}
-
-.right-side{
-    float:right;
+.col-md-4 {
     text-align: center;
 }
 
 /*image of mia */
 
-.left-side img {
-    margin: 0 75px;
+img {
+    margin-top: 20px;
+    margin-left: 65px;
 }
+
+.score-box {
+    background: rgba(240, 166, 247, 0.817);
+    max-height: 150px;
+}
+.score-word {
+    padding-top: 10px;
+}
+
+#newGame {
+    background: rgba(240, 166, 247, 0.817);
+    font-family: 'Trirong','Quando', 'serif';
+    width: 100px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 90%;
+    padding: 10px; 
+    
+
+}
+
+
+
+
+

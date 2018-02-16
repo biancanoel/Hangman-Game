@@ -1,24 +1,40 @@
-var words = ["backpack", "bicycle", "christmas", "easter", "fiesta", "goals", "graffitti", "jetset", "yurt"];
+var words = ["backpack", "snuggles", "christmas", "bunny", "fiesta", "goals", "graffitti", "jetset", "yurt"];
 var currentWord;
-var lastGuess; 
+var currentWordArray= [];
+ 
 var guessedLetters=[];
 var wrongGuesses =[];
 var guessesRemaining=10;
-var wins=0; //prob shouldnt reset wins to 0 so if you play multiple words your score saves
+var wins=0; 
+
+
+
+//document.getElementById('win-count').textContent = '0';
+
+var newWord = function () {
+        //reset guesses, remaining, guessed letters, and current word, guesses remaining
+
+        document.getElementById("current-word").textContent = [" "];
+        document.getElementById('guesses-remaining').textContent = '10';
+        document.getElementById('letters-guessed').textContent = 'none so far';
+        document.getElementById('mia-img').src = "./assets/images/default.jpg";
+        document.getElementById('img-title'.textContent= "Macadamia 'Mia' Torres");
+        guessedLetters.length=0;
+        currentWordArray.length=0;
+        wrongGuesses.length=0;
+        guessesRemaining=10;
+        correctGuesses= [];
+        
+}
 
 
 
 
-/////////When start button is clicked, start a new game
+
+
 document.getElementById("newGame").addEventListener("click", function() {
 
-    document.getElementById("current-word").textContent = ("");
-
-    //reset win count, guesses, remaining, guessed letters, and current word
-    document.getElementById('win-count').textContent = '0';
-    document.getElementById('guesses-remaining').textContent = '10';
-    document.getElementById('letters-guessed').textContent = 'none so far';
-    
+   newWord();
 
     //generate current from words array
     var currentWord = words[Math.floor(Math.random()*9)];
@@ -26,7 +42,7 @@ document.getElementById("newGame").addEventListener("click", function() {
 
     //split word into array CHANGE TO OBJECT
     var currentWordArray = currentWord.split("");
-    console.log(currentWordArray);
+    
 
 
     //replace word with blank spaces
@@ -37,90 +53,85 @@ document.getElementById("newGame").addEventListener("click", function() {
     
 
     //when user click enter button (after entering a letter guess)
-    document.getElementById("readGuess").addEventListener("click", function() {
-        //read the input from user and display to console
-        var lastGuess = document.getElementById("enter-guess").value;
-        console.log('the last guess was ' + lastGuess); 
+    document.onkeyup =  function(event) {
+
 
         //if repeat guess
-        if (guessedLetters.indexOf(lastGuess)>=0) {
-            alert("you have already guessed this letter!")}
+        if (guessedLetters.indexOf(event.key)>=0) {
+            alert("you have already guessed this letter!");
+            console.log("you have already guessed this letter!")}
 
 
         //if correct guess    
-        else if (currentWordArray.indexOf(lastGuess) >=0 ) {
-            guessedLetters.push(lastGuess)    
-            console.log("your guess " + lastGuess +" was correct") 
+        else if (currentWordArray.indexOf(event.key) >=0 ) {
+            guessedLetters.push(event.key)    
+            correctGuesses.push(event.key);
+            console.log("your guess " + event.key +" was correct");
+            
+            var wordToShow = "";
+            for (var i=0; i<currentWordArray.length; i++) {
+                if (correctGuesses.indexOf(currentWordArray[i] !== -1) ) {
+                    for ( var j=0; j< correctGuesses.length; j++) {
+                        if (correctGuesses[j]== currentWordArray[i]) {
+                            wordToShow += currentWordArray[i];
+                            console.log(correctGuesses);
+                        } else {}
+                    } 
+                }  
+                
 
-            for (i=0; i < currentWordArray.length; i++) {
-                if (lastGuess===currentWordArray[i]) {
-                    console.log(currentWordArray.indexOf([i]))
-                }
+                
             }
+            document.getElementById("current-word").textContent = wordToShow;
 
             }
           
         //if incorrect guess
         else {
-            guessedLetters.push(lastGuess);
-            wrongGuesses.push(lastGuess);
-            console.log(guessedLetters);
+            guessedLetters.push(event.key);
+            wrongGuesses.push(event.key);                      
+            console.log(event.key + " was a wrong guess");
             document.getElementById("letters-guessed").textContent = wrongGuesses;
+            document.getElementById("guesses-remaining").textContent = --guessesRemaining;
+            wordToShow += " _ ";
+            console.log("test");
         }    
         
-
-
- 
-            
             //check if game was won. 
             
             function checkWin () {
                 var gameWon = true;
                 for (i=0; i<=currentWordArray.length-1; i++) {
                if (guessedLetters.indexOf(currentWordArray[i])>=0) {
-                
-                   //show correct pic and title
 
-                   //add 1 point to wins
-                   
                } else {
                    gameWon = false;
                }
-              }
-              console.log(gameWon);
-              // add 1 point it word is guessed
+              };
+
+              console.log("has the word been guessed? "+  gameWon);
               if (gameWon=== true) {
-                document.getElementById("win-count").textContent = ++ wins
+                document.getElementById("win-count").textContent = ++wins;
+                document.getElementById('mia-img').src = "./assets/images/"+currentWord+".jpg"
+                document.getElementById("img-title").textContent=currentWord.toUpperCase();
+                
               }
-              
             };
 
             checkWin()
 
-            
-            
-                //player wins game
+            function checkLose () {
+                if (guessesRemaining===0) {
+                    document.getElementById('mia-img').src = "https://i.ytimg.com/vi/QZsCYAanNYg/maxresdefault.jpg";
 
-                //add 1 to wins
+                   
+                }
+            };
 
-                //display corresponding image and text 
+            checkLose();
             
-            
-            /*
-        } else  {
-            //console log showing guess NOT correct
-            console.log("your guess " + lastGuess +" was NOT correct") 
-            //decrease remaining guesses by 1 
-            document.getElementById("guesses-remaining").textContent = -- guessesRemaining
 
-            //check if game was lost
-            if ( guessesRemaining === 0 ) {
-                //display you lose picture 
-            }                                                                                       
-        }
-        */
-
-    }) //end of function called when button is clicked
+    } //end of function called when button is clicked
         
     
     

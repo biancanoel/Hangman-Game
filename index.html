@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman</title>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/reset.css" type="text/css">
     <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
 
@@ -13,37 +13,48 @@
 </head>
 <body>
     <h1>Adventures of Mia Hangman</h1>
-    <div class="main-content">
-        <div class="container left-side">
-            <h2 id="img-title"> Macadamia "Mia" Torres </h2>
-            <img class"goals-img" src="./assets/images/goals.jpg" alt="Mia photo" width="200px">
-            <!--
-            <img class"goals-easter" src="./assets/images/easter.jpg" alt="Mia photo" width="200px">
-            <img src="./assets/images/backpack.jpg" alt="Mia travels via backpack" width="200px">
-            <img src="./assets/images/bicycle.jpg" alt="Mia photo" width="200px">
-            <img src="./assets/images/christmas.jpg" alt="Mia celebrating Christmas" width="200px">
-            <img src="./assets/images/graffitti.jpg" alt="Mia photo" width="200px">
-            <img src="./assets/images/jetset.jpg" alt="Mia photo" width="200px">
-            <img src="./assets/images/yurt.jpg" alt="Mia photo" width="200px">
-            <img src="./assets/images/fiesta.jpg" alt="Mia photo" width="200px">     
-    
-            -->
+    <div class="row">
+        <div class="col-md-2 col-md-offset-5"> 
+            <button id ="newGame"> Play New Word  </button>
         </div>
 
-        <div class="container right-side">
+    </div>
+    
+    <div class="row">
+        
+        <div class="col-md-4 col-md-offset-2">
+            <div class="row">
+                <div class="col md-12"><h2 id="img-title"> Macadamia "Mia" Torres </h2>
+                </div>
+            </div>
+            
+            <img class="img-responsive img-rounded" id="mia-img" src="./assets/images/default.jpg" alt="Mia photo" width="250px" height="300px">
 
-            <button id ="newGame">Get a New Word  </button>
+        </div>
 
-            <h4> Wins: </h4>
-            <h4 id="win-count"> 0</h4>
-            <h4>Current Word</h4>
-            <h4 id="current-word">  </h4>
-            <input type="text" id="enter-guess" placeholder="Enter your guess here" maxlength="1">
-            <button id="readGuess"> Enter </button>
-            <h4> Number of guesses remaining: </h4>
-            <h4 id="guesses-remaining"> guesses remaining </h4>
-            <h4>Wrong Guesses: </h4>
-            <h4 id="letters-guessed"> letters you guessed </h4>
+        <div class="col-md-4">
+            <div class="score-box">
+                <h4 class="title-word">Score: </h4>
+                <h4 id="win-count">  0</h4>
+            </div>
+
+            
+            <h4>Type a letter to make a guess</h4>
+
+            <div class="current-word-box">
+                <h4 class="title-word">Current Word: </h4>
+                <h4 id="current-word">  </h4>
+            </div>
+            <div class="guesses-left-box" >
+                <h4 class="title-word"> Number of guesses remaining: </h4>
+                <h4 id="guesses-remaining"> 10 </h4>
+            </div>
+            <div class="bad-guess-box">
+                <h4 class="title-word">Incorrect Guesses: </h4>
+                <h4 id="letters-guessed"> None so far!  </h4>
+            </div>
+
+
         </div>
 
 </div> <!--div main-content-->
